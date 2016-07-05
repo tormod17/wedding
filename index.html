@@ -1,59 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Tormod & Zahra's Weddding</title>
-</head>
-<body>
-	<nav>
-		<ul>
-			<li>The Wedding</li>
-			<li>Guest Services</li>			
-		</ul>
-		<h2>24th August, 2016</h2>
-		<ul>
-			<li>RSVP</li>
-			<li>Gifts</li>
-			<li>Contact us</li>
-		</ul>
-	</nav>
-	<header>
-		<img src="">
-		<div>
-			<h1>Tormod & Zahra's Weddding</h1>
-			<h3 id="count-down">7days 20 hours and 3 days</h3>
-			<form>
-				<input type="text" name="">
-				<input type="submit" name="">
-			</form>
-		</div>
-	</header>
-	<main>
-		<section>
-			<h2>The Wedding</h2>
-			<p>Details about the wedding schedule, venue </p>
+<div>
+    <!DOCTYPE html>
+    <html lang="en">
 
-		</section>
-		<section>
-			<h2>Guest Services</h2>
-			<p>location,  hotels, transport </p>
-		</section>
-		<section>
-			<h2>RSVP</h2>
-			<form>
-				<input type="text">
-				<input type="text">
-				<input type="text">
-				<textarea type="text"></textarea>
-				<input type="submit" name="">
-			</form>
-		</section>
-		<section>
-			<h2>Gifts</h2>
-		</section>
-		<section>
-			<h2>Contact Us</h2>
-		</section>
-	</main>
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Zahra & Tormod's Weddding</title>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="main.css">
+
+        <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js" integrity="sha256-0vBSIAi/8FxkNOSKyPEfdGQzFDak1dlqFKBYqBp1yC4=" crossorigin="anonymous"></script>
+
+        <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+    </head>
+    <script type="text/javascript" src="guests.js">
+    </script>
+
+    <body>
+        <nav>
+            <ul class="nav-1st-half">
+                <li><a href="#wedding">The Wedding</a> </li>
+                <li><a href="#guest-services">Guest Services</a> </li>
+            </ul>
+            <h2>24th August, 2016</h2>
+            <ul class="nav-2nd-half">
+                <li><a href="#rsvp">RSVP</a></li>
+                <li><a href="#gifts">Gifts</a></li>
+                <li><a href="#contact-us">Contact us</a></li>
+            </ul>
+        </nav>
+        <header>
+            <div>
+                <h1>Zahra & Tormod's Wedding</h1>
+                <div id="clockdiv">
+                    <div>
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+                <form>
+                    <input type="text" name="full-name" id="autocomplete" placeholder="please enter your name here">
+                    <input type="button" id="submit-name" value="submit">
+                </form>
+            </div>
+        </header>
+        <main id="wedding">
+            <div id="wrapper" class="hide">
+                <section>
+                    <div id="time-table">
+                        <h2>The Wedding</h2>
+                        <p>Details about the wedding schedule, venue </p>
+                        <p class="evening hide">We'd be delighted for you to come and join us for the evening reception</p>
+                        <p class="breakfast hide">We're looking forward to seeing you at our wedding reception starting at 13:30</p>
+                        <p>Cain Manor, Surrey</p>
+                    </div>
+                </section>
+                <section id="guests-services">
+                    <h2>Guest Services</h2>
+                    <iframe width="90%" height="500px" src="http://bijouweddingvenues.co.uk/cain-manor-wedding-venue-surrey/guest-services"></iframe>
+                </section>
+                <section>
+                    <div class="small-container">
+                        <h2>RSVP</h2>
+                        <form id="RSVP">
+                            <label for="full-name">Full-name</label>
+                            <input name="full-name" type="text">
+                            <label for="full-name">RSVP</label>
+                            <select id="rsvp" name="rsvp">
+                                <option value="Yes">Yes, delighted to join you</option>
+                                <option value="No">No, unfortunately can't make it</option>
+                            </select>
+                            <lablel for="guest-name">Guest Name</lablel>
+                            <input name="guest-name" type="text" placeholder="Engelbert Humperdinck"value="">
+                            <label for="meal-option" class="meal-option hide">Meal option</label>
+                            <input type="hidden" name="meal-option" placeholder="Vegaterian or Carnivore" type="text" class="hide" value="">
+                            <label for="further-details">Further Details</label>
+                            <textarea name="further-details" type="text" placeholder="any questions.. please feel free" value=""></textarea>
+                            <input type="button" id="submit-rsvp" value="submit">
+                        </form>
+                    </div>
+                </section>
+                <section id="gifts">
+                    <div class="small-container">
+                        <h2>Gifts</h2>
+                        <p>Having you celebrate our big day with us is more than enough. However, if you do wish to give a gift,a monetary gift towards our future would be gratefully recieved. Thank you!</p>
+                        <input id="giftButton" type="button" value="GIVE A GIFT" />
+                        <div id="gift" class="hide">
+                            <h4> No crocadile hands  in kangaroo pockets, please!</h4>
+                            <h4> A simple BAC transfer to 
+                                <p>Acc No: </p>
+                                <p>Sorct Code: </p>
+                            </h4>
+                            <h4>Thank you!</h4>
+                        </div>
+                    </div>
+                </section>
+              </div>
+                <section id="contactUs" class="hide">
+                    <h2>Contact Us</h2>
+                    <h4 id="contactMessage" class="hide">You're not on the list, please look for you name on the list. If you're having trouble just email us, cheers. </h4>
+                    <a href="mailto:tormodsmith@gmail.com" target="_Blank"><i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i></a>
+                    <a href="tel:07739397836"><i class="fa fa-phone-square fa-3x" aria-hidden="true"></i></a>
+                </section>
+          
+        </main>
+        <footer>
+            <p>Tormod Smith&copy;2016</p>
+        </footer>
+    </body>
+    <script type="text/javascript" src="app.js"></script>
+
+    </html>
+</div>
