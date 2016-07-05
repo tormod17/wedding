@@ -1,145 +1,167 @@
 body {
-	background-color: white;
-	font-family: 'Libre Baskerville', serif;
+    background-color: white;
+    font-family: 'Libre Baskerville', serif;
 }
 
-h1, h2 { 
-	font-family: 'Pinyon Script', cursive;
+h1,
+h2 {
+    font-family: 'Pinyon Script', cursive;
 }
 
-section, nav, header {
-	background-color: white;
-	margin:1em;
-	text-align: center;
+section,
+nav,
+header {
+    background-color: white;
+    margin: 1em;
+    text-align: center;
 }
+
 nav {
-	position:fixed;
-	width:100%;	
-	height:6em;
-	top:0;	
-	margin:0;
+    position: fixed;
+    width: 100%;
+    height: 6em;
+    top: 0;
+    margin: 0;
+    <<<<<<< HEAD=======>>>>>>> master
 }
+
 nav ul li {
-	display: inline-block;
-	position: relative;
+    display: inline-block;
+    position: relative;
 }
 
 nav ul li a {
-	text-decoration: none;
-	color: black;
+    text-decoration: none;
+    color: black;
 }
 
-nav ul li :hover {
-  color:blue;
+nav ul li:hover {
+    color: blue;
 }
 
 nav h2 {
-	display: inline-block;
+    display: inline-block;
 }
 
-.nav-1st-half{
-	float:left;
-	
+.nav-1st-half {
+    float: left;
 }
 
-.nav-2nd-half{
-	float:right;
-	margin-right: 2em;
+.nav-2nd-half {
+    float: right;
+    margin-right: 2em;
 }
 
-.nav-1st-half li, .nav-2nd-half li {
-	margin:1em;
-	border-left: 1px solid black;
-	padding-left: 10px;
+.nav-1st-half li,
+.nav-2nd-half li {
+    margin: 1em;
+    border-left: 1px solid black;
+    padding-left: 10px;
 }
 
 header {
-	background-image:url('https://static.pexels.com/photos/25450/pexels-photo.jpg');
-	background-size:cover;
-	background-repeat: no-repeat;
-	background-position: top;
-	height:80%;
-	width:auto;
-	margin: 8em 0 0 0;
+    background-image: url('https://static.pexels.com/photos/25450/pexels-photo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    height: 80%;
+    width: auto;
+    margin: 8em 0 0 0;
 }
-
 
 input[type="text"] {
-	width:300px;
-	height: 40px;
-	border-radius: 10px;
-	padding:1em;
-	margin:1em;
-	box-sizing: border-box;
-	display: inline-block;
+    width: 300px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 1em;
+    margin: 1em;
+    box-sizing: border-box;
+    display: inline-block;
 }
 
-input[type="button"]{
-	background-color: white;
-	border:solid 1px black;
-	padding:0.5em;
-	font-size: 1em;
-	border-radius: 10px;
-	margin-top: 1em;
-	font-family: 'Libre Baskerville', serif;
+input[type="button"] {
+    background-color: white;
+    border: solid 1px black;
+    padding: 0.5em;
+    font-size: 1em;
+    border-radius: 10px;
+    margin-top: 1em;
+    font-family: 'Libre Baskerville', serif;
 }
 
 input[type="button"]:hover {
-	background-color: black;
-	border:solid 1px white;
-	color:white;
-	display: inline-block;
+    background-color: black;
+    border: solid 1px white;
+    color: white;
+    display: inline-block;
 }
 
-h1{
-  font-size: 4em;
-  margin: 3em 0px 20px;
+h1 {
+    font-size: 4em;
+    margin: 3em 0px 20px;
 }
 
 h2 {
-	font-size: 2em;
-}
-#clockdiv{
-	font-family: sans-serif;
-	display: inline-block;
-	font-weight: 100;
-	text-align: center;
-	font-size: 1.5em;
+    font-size: 2em;
 }
 
-#clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
-	
-	display: inline-block;
+#clockdiv {
+    font-family: sans-serif;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 1.5em;
+    font-size: 60px;
+    margin: 40px 0px 20px;
 }
 
-#clockdiv div > span{
-	padding: 15px;
-	border-radius: 3px;
-
-	display: inline-block;
+h2 {
+    font-size: 40px;
 }
 
-.smalltext{
-	padding-top: 5px;
-	font-size: 16px;
+#clockdiv {
+    font-family: sans-serif;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 30px;
 }
+
+#clockdiv > div {
+    padding: 10px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+#clockdiv div > span {
+    padding: 15px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.smalltext {
+    padding-top: 5px;
+    font-size: 16px;
+}
+
 .hide {
-	display: none;
+    display: none;
 }
+
 .show {
-	display: initial;
+    display: initial;
 }
 
 .small-container {
-	margin:auto;
-	width:50%;
-	border-radius: 5px;
+    margin: auto;
+    width: 50%;
+    border-radius: 5px;
     padding: 20px;
 }
 
-#RSVP input[type=text] , textarea, select {
+#RSVP input[type=text],
+textarea,
+select {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -149,7 +171,8 @@ h2 {
     box-sizing: border-box;
 }
 
-#RSVP input[type=button], #gift {
+#RSVP input[type=button],
+#gift {
     width: 100%;
     padding: 14px 20px;
     margin: 8px 0;
@@ -159,30 +182,29 @@ h2 {
 
 #giftButton {
     width: 50%;
- }
-
-#contactUs  a i {
-	text-decoration: none;
-	margin:1.5em;
-	color:black;
 }
 
-footer{
-	text-align: center;
-	margin:auto;
-}
-@media (max-width : 1024px) {
-h1{
-  font-size: 3em;
-  margin: 3em 0px 20px;
+#contactUs a i {
+    text-decoration: none;
+    margin: 1.5em;
+    color: black;
 }
 
-h2 {
-	margin-top:1em;
-	font-size: 1.5em;
-}
-nav h2{
-	margin-left:-15px;
+footer {
+    text-align: center;
+    margin: auto;
 }
 
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3em;
+        margin: 3em 0px 20px;
+    }
+    h2 {
+        margin-top: 1em;
+        font-size: 1.5em;
+    }
+    nav h2 {
+        margin-left: -15px;
+    }
 }
