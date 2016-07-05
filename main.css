@@ -1,0 +1,175 @@
+body {
+	background-color: white;
+	font-family: 'Libre Baskerville', serif;
+}
+
+h1, h2 { 
+	font-family: 'Pinyon Script', cursive;
+}
+
+section, nav, header {
+	background-color: white;
+	margin:1em;
+	text-align: center;
+}
+nav {
+	position:fixed;
+	width:100%;	
+	height:6em;
+	top:0;	
+	margin:0;
+
+}
+nav ul li {
+	display: inline-block;
+	position: relative;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+nav ul li :hover {
+  color:blue;
+}
+
+nav h2 {
+	display: inline-block;
+}
+
+.nav-1st-half{
+	float:left;
+	
+}
+
+.nav-2nd-half{
+	float:right;
+	margin-right: 2em;
+}
+
+.nav-1st-half li, .nav-2nd-half li {
+	margin:1em;
+	border-left: 1px solid black;
+	padding-left: 10px;
+}
+
+header {
+	background-image:url('https://static.pexels.com/photos/25450/pexels-photo.jpg');
+	background-size:cover;
+	background-repeat: no-repeat;
+	background-position: top;
+	height:80%;
+	width:auto;
+	margin: 8em 0 0 0;
+}
+
+
+input[type="text"] {
+	width:300px;
+	height: 40px;
+	border-radius: 10px;
+	padding:1em;
+	margin:1em;
+	box-sizing: border-box;
+	display: inline-block;
+}
+
+input[type="button"]{
+	background-color: white;
+	border:solid 1px black;
+	padding:0.5em;
+	font-size: 1em;
+	border-radius: 10px;
+	margin-top: 1em;
+	font-family: 'Libre Baskerville', serif;
+}
+
+input[type="button"]:hover {
+	background-color: black;
+	border:solid 1px white;
+	color:white;
+	display: inline-block;
+}
+
+h1{
+  font-size: 60px;
+  margin: 40px 0px 20px;
+}
+
+h2 {
+	font-size: 40px;
+}
+#clockdiv{
+	font-family: sans-serif;
+
+	display: inline-block;
+	font-weight: 100;
+	text-align: center;
+	font-size: 30px;
+}
+
+#clockdiv > div{
+	padding: 10px;
+	border-radius: 3px;
+	
+	display: inline-block;
+}
+
+#clockdiv div > span{
+	padding: 15px;
+	border-radius: 3px;
+
+	display: inline-block;
+}
+
+.smalltext{
+	padding-top: 5px;
+	font-size: 16px;
+}
+.hide {
+	display: none;
+}
+.show {
+	display: initial;
+}
+
+.small-container {
+	margin:auto;
+	width:50%;
+	border-radius: 5px;
+    padding: 20px;
+}
+
+#RSVP input[type=text] , textarea, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#RSVP input[type=button], #gift {
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#giftButton {
+    width: 50%;
+ }
+
+#contactUs  a i {
+	text-decoration: none;
+	margin:1.5em;
+	color:black;
+}
+
+footer{
+	text-align: center;
+	margin:auto;
+}
