@@ -38,9 +38,6 @@ nav ul li:hover {
     color: blue;
 }
 
-nav h2 {
-    display: inline-block;
-}
 
 
 nav ul li a {
@@ -187,8 +184,8 @@ footer {
 
 @media (max-width: 1024px) {
     h1 {
-        font-size: 3em;
-        margin: 3em 0px 20px;
+        font-size: 1.75em;
+        margin: 6em 0px 20px;
     }
     h2 {
         margin-top: 1em;
@@ -196,5 +193,15 @@ footer {
     }
     nav h2 {
         margin-left: -15px;
+    }
+    #clockdiv {
+        font-size: 12px;
+           }
+    ul.navbar {
+        padding: 0px;
+        padding-bottom: 5px;
+    }
+    .navbar  {
+        background-color: white;
     }
 }
