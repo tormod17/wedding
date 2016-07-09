@@ -217,7 +217,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Bronwen Campbell-Golding & 1",
+    "GuestName": "Bronwen Campbell-Golding & Pete Thornton",
     "EmailAddress": "bronwencg@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -238,14 +238,14 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Liz Nehdi & 1",
+    "GuestName": "Liz Nehdi & Karim ",
     "EmailAddress": "liz.nehdi@gmail.com",
     "PostalAddress": 0,
     "FullDay": "1",
     "Evening": 0
   },
   {
-    "GuestName": "Fanny Santini & 1",
+    "GuestName": "Fanny Santini & Paul Mc Goldrick",
     "EmailAddress": "Fanny_santini@yahoo.com",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -364,14 +364,14 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "PK",
+    "GuestName": "Paul Kennedy",
     "EmailAddress": "paul.2.kennedy@bt.com",
     "PostalAddress": 0,
     "FullDay": "1",
     "Evening": 0
   },
   {
-    "GuestName": "Sam Blazyca & 1",
+    "GuestName": "Sam Blazyca & Anna Le Marquand",
     "EmailAddress": "samblazyca@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": 0,
@@ -427,7 +427,7 @@ var GUESTS = [
     "Evening": "1"
   },
   {
-    "GuestName": "Harish Varihia & 1",
+    "GuestName": "Harish Varihia & Amrit Virhia",
     "EmailAddress": "hvirihia@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": 0,
