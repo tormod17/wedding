@@ -6,13 +6,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Zahra & Tormod's Weddding</title>
-        
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="main.css">
-
         <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js" integrity="sha256-0vBSIAi/8FxkNOSKyPEfdGQzFDak1dlqFKBYqBp1yC4=" crossorigin="anonymous"></script>
-
         <link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
@@ -26,7 +23,8 @@
             <ul class="navbar">
                 <li><a href="#wedding">The Wedding</a> </li>
                 <li><a href="#guest-services">Guest Services</a> </li>
-                <li><h2>24th August, 2016</h2></li>      
+                <li>
+                    <h2>24th August, 2016</h2></li>
                 <li><a href="#rsvp">RSVP</a></li>
                 <li><a href="#gifts">Gifts</a></li>
                 <li><a href="#contact-us">Contact us</a></li>
@@ -65,14 +63,31 @@
                     <div id="time-table">
                         <h2>The Wedding</h2>
                         <p>Details about the wedding schedule, venue </p>
-                        <p class="evening hide">We'd be delighted for you to come and join us for the evening reception</p>
-                        <p class="breakfast hide">We're looking forward to seeing you at our wedding reception starting at 13:30</p>
-                        <p>Cain Manor, Surrey</p>
+                        <div class="evening hide">
+                            <p>We'd be delighted for you to come and join us for the evening reception at 18:30</p>
+                            <p>Cermonial Cake cutting 19:30</p>
+                            <p>First Dance 19:35</p>
+                            <p>Evening Buffet 20:30</p>
+                            <p>Last Dance 23:30</p>
+                            <p>Home Time 23:45</p>
+                        </div>
+                        <div class="breakfast hide">
+                            <p>Arrivals from 13:00</p>
+                            <p>Ceremony Starts 13:30 </p>
+                            <p>Reception 14:00</p>
+                            <p>Main Banquet 15:30</p>
+                            <p>Coffee tea & Truffles 18:00</p>
+                            <p>Cermonial Cake cutting 19:30</p>
+                            <p>First Dance 19:35</p>
+                            <p>Evening Buffet 20:30</p>
+                            <p>Last Dance 23:30</p>
+                            <p>Home Time 23:45</p>
+                        </div>
                     </div>
                 </section>
                 <section id="guests-services">
                     <h2>Guest Services</h2>
-                   <a target="_Blank" href="https://www.google.co.uk/maps/place/Cain+Manor+by+Bijou+Weddings/@51.126797,-0.8078864,15z/data=!4m2!3m1!1s0x0:0x86a6b8dbbe25cabf?sa=X&ved=0ahUKEwi83pT17d_NAhVLLMAKHZfCAo8Q_BIIcDAK"><h4>Location:</h4>  Churt Rd, Headley Down, Churt GU35 8SR</a>
+                    <a target="_Blank" href="https://www.google.co.uk/maps/place/Cain+Manor+by+Bijou+Weddings/@51.126797,-0.8078864,15z/data=!4m2!3m1!1s0x0:0x86a6b8dbbe25cabf?sa=X&ved=0ahUKEwi83pT17d_NAhVLLMAKHZfCAo8Q_BIIcDAK"><h4>Location:</h4>  Churt Rd, Headley Down, Churt GU35 8SR</a>
                     <br>
                     <br>
                     <iframe width="90%" height="500px" src="http://bijouweddingvenues.co.uk/cain-manor-wedding-venue-surrey/guest-services"></iframe>
@@ -89,7 +104,7 @@
                                 <option value="No">No, unfortunately can't make it</option>
                             </select>
                             <lablel for="guest-name">Guest Name</lablel>
-                            <input name="guest-name" type="text" placeholder="Engelbert Humperdinck"value="">
+                            <input name="guest-name" type="text" placeholder="Engelbert Humperdinck" value="">
                             <label for="meal-option" class="meal-option hide">Meal option</label>
                             <input type="hidden" name="meal-option" placeholder="Vegaterian or Carnivore" type="text" class="hide" value="">
                             <label for="further-details">Further Details</label>
@@ -113,14 +128,13 @@
                         </div>
                     </div>
                 </section>
-              </div>
-                <section id="contactUs" class="hide">
-                    <h2>Contact Us</h2>
-                    <h4 id="contactMessage" class="hide">You're not on the list, please look for you name on the list. If you're having trouble just email us, cheers. </h4>
-                    <a href="mailto:tormodsmith@gmail.com" target="_Blank"><i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i></a>
-                    <a href="tel:07739397836"><i class="fa fa-phone-square fa-3x" aria-hidden="true"></i></a>
-                </section>
-          
+            </div>
+            <section id="contactUs" class="hide">
+                <h2>Contact Us</h2>
+                <h4 id="contactMessage" class="hide">You're not on the list, please look for you name on the list. If you're having trouble just email us, cheers. </h4>
+                <a href="mailto:tormodsmith@gmail.com" target="_Blank"><i class="fa fa-envelope-o fa-3x" aria-hidden="true"></i></a>
+                <a href="tel:07739397836"><i class="fa fa-phone-square fa-3x" aria-hidden="true"></i></a>
+            </section>
         </main>
         <footer>
             <p>Tormod Smith&copy;2016</p>
