@@ -70,7 +70,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Sam and Moira Heaphy",
+    "GuestName": "Heaphy Family, Sam, Moira, James & Fiona",
     "EmailAddress": "sheaphy@acsmedia.com\nmoirahr@btinternet.com",
     "PostalAddress": 0,
     "FullDay": "1",
