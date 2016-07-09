@@ -49,7 +49,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Fergus Smith + Taylor",
+    "GuestName": "Fergus Smith & Taylor",
     "EmailAddress": "NO EMAIL",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -217,7 +217,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Bronwen Campbell-Golding + 1",
+    "GuestName": "Bronwen Campbell-Golding & 1",
     "EmailAddress": "bronwencg@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -231,21 +231,21 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Alice Milnes + 1",
+    "GuestName": "Alice Milnes & 1",
     "EmailAddress": "milnes.alice@gmail.com",
     "PostalAddress": 0,
     "FullDay": "1",
     "Evening": 0
   },
   {
-    "GuestName": "Liz Nehdi + 1",
+    "GuestName": "Liz Nehdi & 1",
     "EmailAddress": "liz.nehdi@gmail.com",
     "PostalAddress": 0,
     "FullDay": "1",
     "Evening": 0
   },
   {
-    "GuestName": "Fanny Santini + 1",
+    "GuestName": "Fanny Santini & 1",
     "EmailAddress": "Fanny_santini@yahoo.com",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -322,7 +322,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Chris McFadden",
+    "GuestName": "Chris McFadden & Helen Burn",
     "EmailAddress": "chrismcfadden@hotmail.com",
     "PostalAddress": 0,
     "FullDay": "1",
@@ -371,7 +371,7 @@ var GUESTS = [
     "Evening": 0
   },
   {
-    "GuestName": "Sam Blazyca + 1",
+    "GuestName": "Sam Blazyca & 1",
     "EmailAddress": "samblazyca@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": 0,
@@ -392,7 +392,7 @@ var GUESTS = [
     "Evening": "1"
   },
   {
-    "GuestName": "Alison Eastwood + 1",
+    "GuestName": "Alison Eastwood & 1",
     "EmailAddress": "NOT COMING",
     "PostalAddress": 0,
     "FullDay": 0,
@@ -427,7 +427,7 @@ var GUESTS = [
     "Evening": "1"
   },
   {
-    "GuestName": "Harish Varihia + 1",
+    "GuestName": "Harish Varihia & 1",
     "EmailAddress": "hvirihia@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": 0,
@@ -497,7 +497,7 @@ var GUESTS = [
     "Evening": "1"
   },
   {
-    "GuestName": "Des + Lesley Friel",
+    "GuestName": "Des & Lesley Friel",
     "EmailAddress": "desfriel@hotmail.com",
     "PostalAddress": 0,
     "FullDay": 0,
