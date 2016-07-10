@@ -51,7 +51,7 @@
     });
 
     var deadline = 'August 24 2016 13:30:00 GMT+0200'
-    initializeClock('clockdiv', deadline);
+   // initializeClock('clockdiv', deadline);
 
     function getGuestList(file) {
         $.getJSON(file, (guests) =>{
