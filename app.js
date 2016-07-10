@@ -1,6 +1,7 @@
 "use strict";
 
 (function() {
+    "use strict";
     //console.log(GUESTS, '>>>>>>>>>>>>>>>');   
     function getTimeRemaining(endtime) {
         var t = Date.parse(endtime) - Date.parse(new Date());
