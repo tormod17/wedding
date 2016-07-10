@@ -1,7 +1,7 @@
 "use strict";
 
 (function() {
-    //console.log(GUESTS, '>>>>>>>>>>>>>>>');   
+   
     function getTimeRemaining(endtime) {
         var t = Date.parse(endtime) - Date.parse(new Date());
         var seconds = Math.floor((t / 1000) % 60);
@@ -41,25 +41,8 @@
         var timeinterval = setInterval(updateClock, 1000);
     }
 
-    var source = GUESTS.map((guest) => {
-        return guest.GuestName 
-    })
-
-    $("#autocomplete").autocomplete({
-        source: source
-    });
-
-    var deadline = 'August 24 2016 13:30:00 GMT+0200'
-    initializeClock('clockdiv', deadline);
-
-    function getGuestList(file) {
-        $.getJSON(file, (guests) =>{
-            console.log('Guests', guests);
-        });
-    }
-
     function getUserDetails(guests) {
-        document.getElementById('submit-name').addEventListener('click', (e) => {
+        document.getElementById('submit-name').addEventListener('click', function(e){
             e.preventDefault();
             var user = document.getElementById('autocomplete').value
             var guest = getGuestDetails(user,guests);
@@ -76,12 +59,11 @@
     }
 
     function getGuestDetails(user, guests) {
-        let userDetails = guests.filter((guest) => {
+        var userDetails = guests.filter(function(guest){
             return guest.GuestName === user
         });
         return userDetails[0]
     }
-
 
     function scrollTo(location) {
         $('html,body').animate({
@@ -91,7 +73,7 @@
     }
 
     function weddingInfo(guest) {
-        let className = guest.FullDay ==='1'? 'breakfast':'evening';
+        var className = guest.FullDay ==='1'? 'breakfast':'evening';
         $('#wrapper').toggle();
         $('#contactUs').toggle();
 
@@ -106,29 +88,35 @@
     }
 
     function sendRSVP() {
-        $('#submit-rsvp').on('click', () => {
-            let form = document.getElementById('RSVP')
-            let fullName = $('input[name=full-name]').val();
-            let rsvp = $('select option:selected').val();
-            let mealOption = $('input[name=meal-option]').val();
-            let furtherDetails = $('textarea[name=further-details]').val();
-            let guestName = $('input[name=guest-name]').val();
+        $('#submit-rsvp').on('click', function(){
+            var form = document.getElementById('RSVP')
+            var fullName = $('input[name=full-name]').val();
+            var rsvp = $('select option:selected').val();
+            var mealOption = $('input[name=meal-option]').val();
+            var furtherDetails = $('textarea[name=further-details]').val();
+            var guestName = $('input[name=guest-name]').val();
 
-            let body = encodeURIComponent('Hi Zahra & Tormod, ' + mealOption + '\n\n' + furtherDetails + '\n\nComing with: ' + guestName + '\n\nfrom ' + '\n\n' + fullName);
-            console.log('bbb', body, mealOption, furtherDetails, guestName);
-            
+            var body = encodeURIComponent('Hi Zahra & Tormod, ' + mealOption + '\n\n' + furtherDetails + '\n\nComing with: ' + guestName + '\n\nfrom ' + '\n\n' + fullName);        
             window.open('mailto:tormodsmith@gmail.com?subject=RSVP%20' + rsvp + '%20Wedding&body=' + body, '_blank');
         })
     }
 
-    $('#giftButton').on('click',()=>{
+    $('#giftButton').on('click',function(){
         $('#gift').toggle();
     });
     
-    //getGuestList('guests.json');  cross origin requests only supported ....
+    var source = GUESTS.map(function(guest){
+        return guest.GuestName 
+    });
+
+    $("#autocomplete").autocomplete({
+        source: source
+    });
+  
+    var deadline = 'August 24 2016 13:30:00 GMT+0200';
+    
+    initializeClock('clockdiv', deadline);
     getUserDetails(GUESTS);
     sendRSVP();
-
-
 
 }());
