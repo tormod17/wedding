@@ -455,7 +455,7 @@ var GUESTS = [
     "Evening": "1"
   },
   {
-    "GuestName": "Adam Marcus",
+    "GuestName": "Adam Marcus and Guest",
     "EmailAddress": "adam.marcus@hotmail.co.uk",
     "PostalAddress": 0,
     "FullDay": 0,
