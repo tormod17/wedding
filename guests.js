@@ -374,8 +374,8 @@ var GUESTS = [
     "GuestName": "Sam Blazyca & Anna Le Marquand",
     "EmailAddress": "samblazyca@hotmail.co.uk",
     "PostalAddress": 0,
-    "FullDay": 0,
-    "Evening": "1"
+    "FullDay": "1",
+    "Evening": 0,
   },
   {
     "GuestName": "Arushi Puri",
