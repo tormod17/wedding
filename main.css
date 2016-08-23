@@ -225,4 +225,8 @@ footer {
     .navbar  {
         background-color: white;
     }
+    .fa.fa-angle-down.fa-5x {
+        font-size: 1em;
+        margin-top: 0em;
+    }
 }
