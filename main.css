@@ -203,6 +203,11 @@ footer {
     margin: auto;
 }
 
+
+
+
+
+
 @media (max-width: 1024px) {
     h1 {
         font-size: 1.75em;
@@ -225,8 +230,14 @@ footer {
     .navbar  {
         background-color: white;
     }
+  
+}
+
+
+@media (max-width: 600px) {
     .fa.fa-angle-down.fa-5x {
-        font-size: 1em;
+        font-size: 0.5em;
         margin-top: 0em;
     }
+
 }
