@@ -53,7 +53,10 @@
                 scrollTo('#contactUs')
             } else {
                 scrollTo("#wedding");
-                weddingInfo(guest);
+                var evening = 'Look forward to seeing you in the Evening at 18:30'
+                var breakfast = 'Look forward to seeing you at 13:00'
+                guest.Evening === 1 ? alert(evening) : alert(breakfast);
+                //weddingInfo(guest);
             }
         });
     }
@@ -108,6 +111,10 @@
     var source = GUESTS.map(function(guest){
         return guest.GuestName 
     });
+
+    $('.fa.fa-angle-down.fa-5x').on('click',function(){
+           scrollTo("#wedding");
+    })
 
     $("#autocomplete").autocomplete({
         source: source
