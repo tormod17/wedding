@@ -151,6 +151,11 @@ h2 {
     padding: 20px;
 }
 
+
+.fa.fa-angle-down.fa-3x {
+    cursor:pointer;
+}
+
 #time-table {
     width:80%;
     margin:auto;
@@ -236,8 +241,8 @@ footer {
 
 @media (max-width: 600px) {
     .fa.fa-angle-down.fa-5x {
-        font-size: 0.5em;
-        margin-top: 0em;
+        font-size: 0.25em;
+        margin-top: 0;
     }
 
 }
