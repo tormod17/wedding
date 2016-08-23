@@ -195,6 +195,13 @@ var GUESTS = [
     "FullDay": "1",
     "Evening": 0
   },
+   {
+    "GuestName": "Jack Tierney",
+    "EmailAddress": "",
+    "PostalAddress": 0,
+    "FullDay": "1",
+    "Evening": 0
+  },
   {
     "GuestName": "John Puntis",
     "EmailAddress": 0,
@@ -416,8 +423,8 @@ var GUESTS = [
     "GuestName": "Jimmy Johnston",
     "EmailAddress": "jjohnston60@hotmail.com",
     "PostalAddress": 0,
-    "FullDay": 0,
-    "Evening": "1"
+    "FullDay": "1",
+    "Evening": 0,
   },
   {
     "GuestName": "Stephen Jahoda",
