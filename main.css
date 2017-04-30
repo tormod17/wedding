@@ -3,7 +3,6 @@ body {
     font-family: 'Libre Baskerville', serif;
 }
 
-<<<<<<< HEAD
 h1, h2 {
 	font-family: 'Pinyon Script', cursive;
 }
@@ -75,21 +74,7 @@ nav {
 	height:6em;
 	top:0;
 	margin:0;
-=======
-h1,
-h2 {
-    font-family: 'Pinyon Script', cursive;
 }
-
-section,
-nav,
-header {
-    background-color: white;
-    margin: 1em;
-    text-align: center;
-
-}
->>>>>>> 2ae64e97a66fbca9bda5a1bd47d1ae94da032726
 
 section {
       display:block;
@@ -118,7 +103,6 @@ nav ul li:hover {
 }
 
 
-<<<<<<< HEAD
 .nav-1st-half{
 	float:left;
 
@@ -128,9 +112,6 @@ nav ul li:hover {
 	float:right;
 	margin-right: 2em;
 }
-=======
->>>>>>> 2ae64e97a66fbca9bda5a1bd47d1ae94da032726
-
 nav ul li a {
     margin: 1em;
     border-left: 1px solid black;
@@ -329,7 +310,7 @@ footer {
     .navbar  {
         background-color: white;
     }
-  
+
 }
 
 
