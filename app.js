@@ -72,7 +72,21 @@
          forwardButton.append(nextSvg);
 
          controls.append(backButton, forwardButton);
-         $('#gallery').append(list, controls);
+         var sideReel = createSideReel(photos);
+         $('#gallery').append(list, controls, sideReels);
+    }
+
+    function createSideReel(photos){
+        var previewSlides = photos.map(function(photo,i){
+            var previewClass = i === 0 ? 'preview showing' : 'preview';
+            var slide = $('<li></li>').addClass(slideClass).css({
+            'background-image':'url('+photo+')',
+            return previewSlide;
+        });
+            var list = $('<ul id="previewSlides"></ul>');
+            list.append(slides);
+        return list
+     })
     }
 
     function getTimeRemaining(endtime) {
