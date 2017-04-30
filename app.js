@@ -73,7 +73,7 @@
 
          controls.append(backButton, forwardButton);
          var sideReel = createSideReel(photos);
-         $('#gallery').append(list, controls, sideReels);
+         $('#gallery').append(list, controls, sideReel);
     }
 
     function createSideReel(photos){
