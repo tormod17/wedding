@@ -174,18 +174,12 @@ h2 {
     margin: 40px 0px 20px;
 }
 
-<<<<<<< HEAD
 #clockdiv > div{
 	padding: 10px;
 	border-radius: 3px;
 
 	display: inline-block;
-=======
-h2 {
-    font-size: 40px;
->>>>>>> 2ae64e97a66fbca9bda5a1bd47d1ae94da032726
 }
-
 #clockdiv {
     font-family: sans-serif;
     display: inline-block;
