@@ -5,8 +5,7 @@
     //console.log(GUESTS, '>>>>>>>>>>>>>>>');
     (function getWeddingPhotos() {
         var url = 'https://api.flickr.com/services/rest/';
-        var query ='?method=flickr.photosets.getPhotos&api_key=87fec12d889fbf46b2be4a684f89b095&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157681395382410-027ee2196ebb2eaf&api_sig=33b679dd252eec866dbe6e64ecb7ed7d';
-        $.get(url + query, function(data, status) {
+        var query ='?method=flickr.photosets.getPhotos&api_key=8d779e2ab6bce146731dc0bb3dc373eb&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157683187455356-ebf274d7c3395d83&api_sig=f4bd179c86b8a5ffe38c0bb24043b84d'
             if (status === 'success') {
                 var photos = getPhotoURLs(data.photoset.photo).reverse();
                 createGallery(photos);
