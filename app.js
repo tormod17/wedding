@@ -96,7 +96,7 @@
             var previewSlides = photos.map(function(photo, i) {
                 var previewClass = i === 0 ? 'preview showing' : 'preview';
                 var previewSlide = $('<li></li>').addClass(previewClass).css({
-                    'background-image': 'url(' + photo.replace('_b','_s') + ')'
+                    'background-image': 'url(' + photo.replace('_b.jpg','_s.jpg') + ')'
                 }).on('click', function(e) {
                     selectSlide(i)
                 });
