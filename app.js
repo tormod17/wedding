@@ -11,7 +11,7 @@
                 var photos = getPhotoURLs(data.photoset.photo).reverse();
                 createGallery(photos);
             } else {
-                console.log('Error', status);
+                console.log('Error with flickr talk Mr T', status);
             }
         });
     }())
@@ -27,19 +27,23 @@
         return photoURLs
     }
     var controls = $('<div class="controls"></div>');
-    var backSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
-    var nextSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
+    var backSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
+    var divider = '<div class="divider"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="10" x2="50" y2="90"></svg></div>';
+    var nextSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
-    function makeSlideMagnify(){
-        $('.slide.showing')
+    function makeSlideMagnify(ele){
+        ele
         .on('mouseover', function(){
-            $(this).css({'transform': 'scale(1.6)'})
+            ele.css({'transform': 'scale(1.6)'})
         })
         .on('mouseout', function(){
-            $(this).css({'transform': 'scale(1)'})
+            ele.css({'transform': 'scale(1)'})
         })
         .on('mousemove', function(e){
-          $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
+            var target = $('#slides').offset();
+            var x = ((e.pageX - target.left) / $('.showing').width())* 100 +'%';
+            var y = ((e.pageY - target.top) / $('.showing').height() )* 100 + '%';
+            ele.css({'transform-origin': x +  y });
         })
     }
     function createGallery(photos) {
@@ -48,6 +52,7 @@
             var slide = $('<li></li>').addClass(slideClass).css({
                 'background-image': 'url(' + photo + ')',
             });
+            makeSlideMagnify(slide)
             return slide;
         })
         var list = $('<ul id="slides"></ul>');
@@ -73,7 +78,7 @@
 
         var backButton = $('<div class="scroll back"></div>');
         backButton.on('click', function() {
-            backSlide()
+            backSlide();
         })
         backButton.append(backSvg);
 
@@ -85,7 +90,7 @@
 
         function selectSlide(i) {
             $('.slide.showing').attr('class', 'slide');
-            slides[i].attr('class', 'slide showing')
+            slides[i].attr('class', 'slide showing');
         }
         function showReel(photos) {
             var previewSlides = photos.map(function(photo, i) {
@@ -102,10 +107,10 @@
             return list
         }
 
-        controls.append(backButton, forwardButton);
+        controls.append(backButton, divider, forwardButton);
         var sideReel = showReel(photos);
         $('#gallery').append(list, controls, sideReel);
-        //makeSlideMagnify()
+
     }
 
 
