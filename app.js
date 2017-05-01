@@ -9,6 +9,7 @@
         $.get(url + query , function(data, status){
             if (status === 'success') {
                 var photos = getPhotoURLs(data.photoset.photo).reverse();
+                if(!photos){ alert('Tormod needs to sort flickr out or get a better image hosting site')}
                 createGallery(photos);
             } else {
                 console.log('Error with flickr talk to Mr T', status);
@@ -20,8 +21,8 @@
     function getPhotoURLs(photos) {
         var photoURLs = photos.map(function(obj) {
             var host = 'https://c1.staticflickr.com/';
-            var photoSize = 'b.jpg';
-            var photo = obj.id + '_' + obj.secret + '_' + photoSize;
+            var photoSize = '_b.jpg';
+            var photo = obj.id + '_' + obj.secret + photoSize;
             return host + obj.farm + '/' + obj.server + '/' + photo;
         })
         return photoURLs
@@ -49,9 +50,12 @@
     function createGallery(photos) {
         var slides = photos.map(function(photo, i) {
             var slideClass = i === 0 ? 'slide showing' : 'slide';
-            var slide = $('<li></li>').addClass(slideClass).css({
-                'background-image': 'url(' + photo + ')',
-            });
+            var slide = $('<li></li>').addClass(slideClass)
+            if ( i <= 5 ){
+                slide.css({
+                    'background-image': 'url(' + photo + ')',
+                });
+            }
             makeSlideMagnify(slide)
             return slide;
         })
@@ -70,6 +74,13 @@
 
         function goToSlide(n) {
             var l = slides.length;
+            if (currentSlide%5 === 0){
+                for (var i=0; i<=5; i++){
+                    slides[currentSlide +i] && slides[currentSlide +i].css({
+                        'background-image': 'url(' + photos[currentSlide+i] + ')',
+                    })
+                }
+            }
             slides[currentSlide].attr('class', 'slide');
             $('.slide.showing').attr('class','slide');
             currentSlide = (n + l) % l;
@@ -90,6 +101,13 @@
 
         function selectSlide(i) {
             $('.slide.showing').attr('class', 'slide');
+            for ( var j=0; j < 5; j++) {
+                slides[i-j] && slides[i-j].css({ 'background-image': 'url(' + photos[i-j] + ')'})
+                slides[i].css({ 'background-image': 'url(' + photos[i] + ')'})
+                slides[i+j] && slides[i+j].css({ 'background-image': 'url(' + photos[i+j] + ')'})
+            }
+            currentSlide = i;
+            console.log(currentSlide);
             slides[i].attr('class', 'slide showing');
         }
         function showReel(photos) {
@@ -112,7 +130,6 @@
         $('#gallery').append(list, controls, sideReel);
 
     }
-
 
     function getTimeRemaining(endtime) {
         var t = Date.parse(endtime) - Date.parse(new Date());
