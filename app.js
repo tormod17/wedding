@@ -8,7 +8,7 @@
         var query ='?method=flickr.photosets.getPhotos&api_key=87fec12d889fbf46b2be4a684f89b095&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157681395382410-027ee2196ebb2eaf&api_sig=33b679dd252eec866dbe6e64ecb7ed7d';
         $.get(url + query, function(data, status) {
             if (status === 'success') {
-                var photos = getPhotoURLs(data.photoset.photo);
+                var photos = getPhotoURLs(data.photoset.photo).reverse();
                 createGallery(photos);
             } else {
                 console.log('Error', status);
@@ -30,6 +30,18 @@
     var backSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
     var nextSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
+    function makeSlideMagnify(){
+        $('.slide.showing')
+        .on('mouseover', function(){
+            $(this).css({'transform': 'scale(1.6)'})
+        })
+        .on('mouseout', function(){
+            $(this).css({'transform': 'scale(1)'})
+        })
+        .on('mousemove', function(e){
+          $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 100 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 100 +'%'});
+        })
+    }
     function createGallery(photos) {
         var slides = photos.map(function(photo, i) {
             var slideClass = i === 0 ? 'slide showing' : 'slide';
@@ -93,6 +105,7 @@
         controls.append(backButton, forwardButton);
         var sideReel = showReel(photos);
         $('#gallery').append(list, controls, sideReel);
+        //makeSlideMagnify()
     }
 
 
@@ -146,7 +159,7 @@
     var deadline = 'August 24 2016 13:30:00 GMT+0200'
         // initializeClock('clockdiv', deadline);
 
-    function getGuestList(file) {
+/*    function getGuestList(file) {
         $.getJSON(file, (guests) => {
             console.log('Guests', guests);
         });
@@ -177,7 +190,7 @@
             return guest.GuestName === user
         });
         return userDetails[0]
-    }
+    }*/
 
     function scrollTo(location) {
         $('html,body').animate({
@@ -235,6 +248,6 @@
     var deadline = 'August 24 2016 13:30:00 GMT+0200';
 
     initializeClock('clockdiv', deadline);
-    getUserDetails(GUESTS);
+  //  getUserDetails(GUESTS);
     sendRSVP();
 }());
