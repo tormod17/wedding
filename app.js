@@ -8,9 +8,9 @@
         var query ='?method=flickr.photosets.getPhotos&api_key=8d779e2ab6bce146731dc0bb3dc373eb&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157683187455356-ebf274d7c3395d83&api_sig=f4bd179c86b8a5ffe38c0bb24043b84d'
             if (status === 'success') {
                 var photos = getPhotoURLs(data.photoset.photo).reverse();
-                createGallery(photos);
+                !photos ? alert('Tell Tormod we need a new token from Flickr') : createGallery(photos);
             } else {
-                console.log('Error with flickr talk Mr T', status);
+                console.log('Error', status);
             }
         });
     }())
