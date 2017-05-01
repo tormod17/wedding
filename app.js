@@ -3,91 +3,98 @@
 (function() {
     "use strict";
     //console.log(GUESTS, '>>>>>>>>>>>>>>>');
-    (function getWeddingPhotos(){
+    (function getWeddingPhotos() {
         var url = 'https://api.flickr.com/services/rest/';
-        var query = '?method=flickr.photosets.getPhotos&api_key=87c9c371d7fbeb5b5e1da8a1453d9ea0&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157681372915940-9fb85d089d16c11e&api_sig=05a63f1a1996f5db2c1f53bced3af59f'
-        $.get( url + query, function(data, status){
-            if(status==='success'){
-               var photos = getPhotoURLs(data.photoset.photo);
-               createGallery(photos);
-            }else{
-               console.log('Error', status);
+        var query ='?method=flickr.photosets.getPhotos&api_key=87fec12d889fbf46b2be4a684f89b095&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157681395382410-027ee2196ebb2eaf&api_sig=33b679dd252eec866dbe6e64ecb7ed7d';
+        $.get(url + query, function(data, status) {
+            if (status === 'success') {
+                var photos = getPhotoURLs(data.photoset.photo);
+                createGallery(photos);
+            } else {
+                console.log('Error', status);
             }
         });
     }())
 
 
-   function getPhotoURLs(photos){
-    var photoURLs = photos.map(function(obj){
+    function getPhotoURLs(photos) {
+        var photoURLs = photos.map(function(obj) {
             var host = 'https://c1.staticflickr.com/';
-            var photoSize ='b.jpg';
-            var photo = obj.id+'_'+obj.secret+'_'+photoSize;
-            return host+obj.farm +'/'+obj.server+'/'+photo;
+            var photoSize = 'b.jpg';
+            var photo = obj.id + '_' + obj.secret + '_' + photoSize;
+            return host + obj.farm + '/' + obj.server + '/' + photo;
         })
-    return photoURLs
-   }
-  var controls = $('<div class="controls"></div>');
-  var backSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
-  var nextSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
+        return photoURLs
+    }
+    var controls = $('<div class="controls"></div>');
+    var backSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
+    var nextSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
-   function createGallery(photos){
-     var slides = photos.map(function(photo,i){
-        var slideClass = i === 0 ? 'slide showing' : 'slide';
-        var slide = $('<li></li>').addClass(slideClass).css({
-            'background-image':'url('+photo+')',
-        });
-        return slide;
-     })
-     var list = $('<ul id="slides"></ul>');
-     list.append(slides);
+    function createGallery(photos) {
+        var slides = photos.map(function(photo, i) {
+            var slideClass = i === 0 ? 'slide showing' : 'slide';
+            var slide = $('<li></li>').addClass(slideClass).css({
+                'background-image': 'url(' + photo + ')',
+            });
+            return slide;
+        })
+        var list = $('<ul id="slides"></ul>');
+        list.append(slides);
 
         var currentSlide = 0;
 
         var nextSlide = function() {
-             goToSlide(currentSlide+
-                1);
+            goToSlide(currentSlide + 1);
         }
 
         var backSlide = function() {
-            goToSlide(currentSlide-1);
+            goToSlide(currentSlide - 1);
         }
 
         function goToSlide(n) {
             var l = slides.length;
             slides[currentSlide].attr('class', 'slide');
-            currentSlide = (n+l)%l;
-            slides[currentSlide].attr( 'class', 'slide showing');
+            $('.slide.showing').attr('class','slide');
+            currentSlide = (n + l) % l;
+            slides[currentSlide].attr('class', 'slide showing');
         }
 
-         var backButton =$('<div class="scroll back"></div>');
-         backButton.on('click', function(){
+        var backButton = $('<div class="scroll back"></div>');
+        backButton.on('click', function() {
             backSlide()
-         })
-         backButton.append(backSvg);
+        })
+        backButton.append(backSvg);
 
-         var forwardButton =$('<div class="scroll forward"></div>');
-         forwardButton.on('click', function(){
+        var forwardButton = $('<div class="scroll forward"></div>');
+        forwardButton.on('click', function() {
             nextSlide();
-         })
-         forwardButton.append(nextSvg);
+        })
+        forwardButton.append(nextSvg);
 
-         controls.append(backButton, forwardButton);
-         var sideReel = createSideReel(photos);
-         $('#gallery').append(list, controls, sideReel);
-    }
-
-    function createSideReel(photos){
-        var previewSlides = photos.map(function(photo,i){
-            var previewClass = i === 0 ? 'preview showing' : 'preview';
-            var slide = $('<li></li>').addClass(slideClass).css({
-            'background-image':'url('+photo+')',
-            return previewSlide;
-        });
+        function selectSlide(i) {
+            $('.slide.showing').attr('class', 'slide');
+            slides[i].attr('class', 'slide showing')
+        }
+        function showReel(photos) {
+            var previewSlides = photos.map(function(photo, i) {
+                var previewClass = i === 0 ? 'preview showing' : 'preview';
+                var previewSlide = $('<li></li>').addClass(previewClass).css({
+                    'background-image': 'url(' + photo + ')'
+                }).on('click', function(e) {
+                    selectSlide(i)
+                });
+                return previewSlide;
+            });
             var list = $('<ul id="previewSlides"></ul>');
-            list.append(slides);
-        return list
-     })
+            list.append(previewSlides);
+            return list
+        }
+
+        controls.append(backButton, forwardButton);
+        var sideReel = showReel(photos);
+        $('#gallery').append(list, controls, sideReel);
     }
+
 
     function getTimeRemaining(endtime) {
         var t = Date.parse(endtime) - Date.parse(new Date());
@@ -137,19 +144,19 @@
     });
 
     var deadline = 'August 24 2016 13:30:00 GMT+0200'
-   // initializeClock('clockdiv', deadline);
+        // initializeClock('clockdiv', deadline);
 
     function getGuestList(file) {
-        $.getJSON(file, (guests) =>{
+        $.getJSON(file, (guests) => {
             console.log('Guests', guests);
         });
     }
 
     function getUserDetails(guests) {
-        document.getElementById('submit-name').addEventListener('click', function(e){
+        document.getElementById('submit-name').addEventListener('click', function(e) {
             e.preventDefault();
             var user = document.getElementById('autocomplete').value
-            var guest = getGuestDetails(user,guests);
+            var guest = getGuestDetails(user, guests);
             console.log(guest);
             if (!guest) {
                 $('#contactUs').toggle();
@@ -166,7 +173,7 @@
     }
 
     function getGuestDetails(user, guests) {
-        var userDetails = guests.filter(function(guest){
+        var userDetails = guests.filter(function(guest) {
             return guest.GuestName === user
         });
         return userDetails[0]
@@ -180,7 +187,7 @@
     }
 
     function weddingInfo(guest) {
-        var className = guest.FullDay ==='1'? 'breakfast':'evening';
+        var className = guest.FullDay === '1' ? 'breakfast' : 'evening';
         $('#wrapper').toggle();
         $('#contactUs').toggle();
 
@@ -196,7 +203,7 @@
 
     function sendRSVP() {
 
-        $('#submit-rsvp').on('click', function(){
+        $('#submit-rsvp').on('click', function() {
             var form = document.getElementById('RSVP')
             var fullName = $('input[name=full-name]').val();
             var rsvp = $('select option:selected').val();
@@ -209,16 +216,16 @@
         })
     }
 
-    $('#giftButton').on('click',function(){
+    $('#giftButton').on('click', function() {
         $('#gift').toggle();
     });
 
-    var source = GUESTS.map(function(guest){
+    var source = GUESTS.map(function(guest) {
         return guest.GuestName
     });
 
-    $('.fa.fa-angle-down.fa-5x').on('click',function(){
-           scrollTo("#wedding");
+    $('.fa.fa-angle-down.fa-5x').on('click', function() {
+        scrollTo("#wedding");
     })
 
     $("#autocomplete").autocomplete({
