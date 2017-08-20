@@ -1,22 +1,20 @@
 "use strict";
+var controls = $('<div class="controls"></div>');
+var backSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
+var divider = '<div class="divider"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="10" x2="50" y2="90"></svg></div>';
+var nextSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
 (function() {
     "use strict";
-    //console.log(GUESTS, '>>>>>>>>>>>>>>>');
     (function getWeddingPhotos() {
-        var url = 'https://api.flickr.com/services/rest/';
-        var query ='?method=flickr.photosets.getPhotos&api_key=8d779e2ab6bce146731dc0bb3dc373eb&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157683187455356-ebf274d7c3395d83&api_sig=f4bd179c86b8a5ffe38c0bb24043b84d'
-        $.get(url + query , function(data, status){
-            if (status === 'success') {
-                var photos = getPhotoURLs(data.photoset.photo).reverse();
-                if(!photos){ alert('Tormod needs to sort flickr out or get a better image hosting site')}
-                createGallery(photos);
-            } else {
-                console.log('Error with flickr talk to Mr T', status);
-            }
-        });
-    }())
+       // var url = 'https://api.flickr.com/services/rest/';
+        //var query = '?method=flickr.photosets.getPhotos&api_key=5cf3287df65ea5208bf0b2aade1f929d&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157680956231924-9f47bab12c520407&api_sig=99b2055502172eb5a21cc077b17de1c9';
+        var photos = getPhotoURLs(PHOTOSET.photoset.photo).reverse();
+        if(!photos){ alert('Tormod needs to sort flickr out or get a better image hosting site')}
+        createGallery(photos.slice(0,50));
 
+    }())
+   //390ad0a94169f2c3
 
     function getPhotoURLs(photos) {
         var photoURLs = photos.map(function(obj) {
@@ -27,10 +25,6 @@
         })
         return photoURLs
     }
-    var controls = $('<div class="controls"></div>');
-    var backSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
-    var divider = '<div class="divider"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="10" x2="50" y2="90"></svg></div>';
-    var nextSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
     function makeSlideMagnify(ele){
         ele
@@ -74,8 +68,8 @@
 
         function goToSlide(n) {
             var l = slides.length;
-            if (currentSlide%5 === 0){
-                for (var i=0; i<=5; i++){
+            if (currentSlide%3 === 0){
+                for (var i=0; i<=3; i++){
                     slides[currentSlide +i] && slides[currentSlide +i].css({
                         'background-image': 'url(' + photos[currentSlide+i] + ')',
                     })
@@ -101,7 +95,7 @@
 
         function selectSlide(i) {
             $('.slide.showing').attr('class', 'slide');
-            for ( var j=0; j < 5; j++) {
+            for ( var j=0; j < 3; j++) {
                 slides[i-j] && slides[i-j].css({ 'background-image': 'url(' + photos[i-j] + ')'})
                 slides[i].css({ 'background-image': 'url(' + photos[i] + ')'})
                 slides[i+j] && slides[i+j].css({ 'background-image': 'url(' + photos[i+j] + ')'})
@@ -127,6 +121,18 @@
 
         controls.append(backButton, divider, forwardButton);
         var sideReel = showReel(photos);
+        sideReel.on('scroll', function(){
+          var x = sideReel.scrollTop()
+          if( x >= 200){
+            //('#gallery').html('');
+            //createGallery(photos.slice(50,100));
+          }
+          if( x >= 400){
+            //$('#gallery').html('');
+            //createGallery(photos.slice(100,150));
+          }
+
+        });
         $('#gallery').append(list, controls, sideReel);
 
     }
@@ -180,39 +186,6 @@
 
     var deadline = 'August 24 2016 13:30:00 GMT+0200'
         // initializeClock('clockdiv', deadline);
-
-/*    function getGuestList(file) {
-        $.getJSON(file, (guests) => {
-            console.log('Guests', guests);
-        });
-    }
-
-    function getUserDetails(guests) {
-        document.getElementById('submit-name').addEventListener('click', function(e) {
-            e.preventDefault();
-            var user = document.getElementById('autocomplete').value
-            var guest = getGuestDetails(user, guests);
-            console.log(guest);
-            if (!guest) {
-                $('#contactUs').toggle();
-                $('#contactMessage').toggle();
-                scrollTo('#contactUs')
-            } else {
-                scrollTo("#wedding");
-                var evening = 'Look forward to seeing you in the Evening at 18:30'
-                var breakfast = 'Look forward to seeing you at 13:00'
-                guest.Evening === 1 ? alert(evening) : alert(breakfast);
-                //weddingInfo(guest);
-            }
-        });
-    }
-
-    function getGuestDetails(user, guests) {
-        var userDetails = guests.filter(function(guest) {
-            return guest.GuestName === user
-        });
-        return userDetails[0]
-    }*/
 
     function scrollTo(location) {
         $('html,body').animate({
