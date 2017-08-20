@@ -1,77 +1,140 @@
 "use strict";
+var controls = $('<div class="controls"></div>');
+var backSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
+var divider = '<div class="divider"><svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="50" y1="10" x2="50" y2="90"></svg></div>';
+var nextSvg = '<svg width="100" height="100" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
 
 (function() {
     "use strict";
-    //console.log(GUESTS, '>>>>>>>>>>>>>>>');
-    (function getWeddingPhotos(){
-        var url = 'https://api.flickr.com/services/rest/';
-        var query = '?method=flickr.photosets.getPhotos&api_key=87c9c371d7fbeb5b5e1da8a1453d9ea0&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157681372915940-9fb85d089d16c11e&api_sig=05a63f1a1996f5db2c1f53bced3af59f'
-        $.get( url + query, function(data, status){
-            if(status==='success'){
-               var photos = getPhotoURLs(data.photoset.photo);
-               createGallery(photos);
-            }else{
-               console.log('Error', status);
-            }
-        });
+    (function getWeddingPhotos() {
+       // var url = 'https://api.flickr.com/services/rest/';
+        //var query = '?method=flickr.photosets.getPhotos&api_key=5cf3287df65ea5208bf0b2aade1f929d&photoset_id=72157683234143205&user_id=149536636%40N03&format=json&nojsoncallback=1&auth_token=72157680956231924-9f47bab12c520407&api_sig=99b2055502172eb5a21cc077b17de1c9';
+        var photos = getPhotoURLs(PHOTOSET.photoset.photo).reverse();
+        if(!photos){ alert('Tormod needs to sort flickr out or get a better image hosting site')}
+        createGallery(photos.slice(0,50));
+
     }())
+   //390ad0a94169f2c3
 
-
-   function getPhotoURLs(photos){
-    var photoURLs = photos.map(function(obj){
+    function getPhotoURLs(photos) {
+        var photoURLs = photos.map(function(obj) {
             var host = 'https://c1.staticflickr.com/';
-            var photoSize ='b.jpg';
-            var photo = obj.id+'_'+obj.secret+'_'+photoSize;
-            return host+obj.farm +'/'+obj.server+'/'+photo;
+            var photoSize = '_b.jpg';
+            var photo = obj.id + '_' + obj.secret + photoSize;
+            return host + obj.farm + '/' + obj.server + '/' + photo;
         })
-    return photoURLs
-   }
-  var controls = $('<div class="controls"></div>');
-  var backSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M70,20, 20,50, 70,80"></path></svg>';
-  var nextSvg = '<svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20,20, 70,50, 20,80"></path></svg>';
+        return photoURLs
+    }
 
-   function createGallery(photos){
-     var slides = photos.map(function(photo,i){
-        var slideClass = i === 0 ? 'slide showing' : 'slide';
-        var slide = $('<li></li>').addClass(slideClass).css({
-            'background-image':'url('+photo+')',
-        });
-        return slide;
-     })
-     var list = $('<ul id="slides"></ul>');
-     list.append(slides);
+    function makeSlideMagnify(ele){
+        ele
+        .on('mouseover', function(){
+            ele.css({'transform': 'scale(1.6)'})
+        })
+        .on('mouseout', function(){
+            ele.css({'transform': 'scale(1)'})
+        })
+        .on('mousemove', function(e){
+            var target = $('#slides').offset();
+            var x = ((e.pageX - target.left) / $('.showing').width())* 100 +'%';
+            var y = ((e.pageY - target.top) / $('.showing').height() )* 100 + '%';
+            ele.css({'transform-origin': x +  y });
+        })
+    }
+    function createGallery(photos) {
+        var slides = photos.map(function(photo, i) {
+            var slideClass = i === 0 ? 'slide showing' : 'slide';
+            var slide = $('<li></li>').addClass(slideClass)
+            if ( i <= 5 ){
+                slide.css({
+                    'background-image': 'url(' + photo + ')',
+                });
+            }
+            makeSlideMagnify(slide)
+            return slide;
+        })
+        var list = $('<ul id="slides"></ul>');
+        list.append(slides);
 
         var currentSlide = 0;
 
         var nextSlide = function() {
-             goToSlide(currentSlide+1);
+            goToSlide(currentSlide + 1);
         }
 
         var backSlide = function() {
-            goToSlide(currentSlide-1);
+            goToSlide(currentSlide - 1);
         }
 
         function goToSlide(n) {
             var l = slides.length;
+            if (currentSlide%3 === 0){
+                for (var i=0; i<=3; i++){
+                    slides[currentSlide +i] && slides[currentSlide +i].css({
+                        'background-image': 'url(' + photos[currentSlide+i] + ')',
+                    })
+                }
+            }
             slides[currentSlide].attr('class', 'slide');
-            currentSlide = (n+l)%l;
-            slides[currentSlide].attr( 'class', 'slide showing');
+            $('.slide.showing').attr('class','slide');
+            currentSlide = (n + l) % l;
+            slides[currentSlide].attr('class', 'slide showing');
         }
 
-         var backButton =$('<div class="scroll back"></div>');
-         backButton.on('click', function(){
-            backSlide()
-         })
-         backButton.append(backSvg);
+        var backButton = $('<div class="scroll back"></div>');
+        backButton.on('click', function() {
+            backSlide();
+        })
+        backButton.append(backSvg);
 
-         var forwardButton =$('<div class="scroll forward"></div>');
-         forwardButton.on('click', function(){
+        var forwardButton = $('<div class="scroll forward"></div>');
+        forwardButton.on('click', function() {
             nextSlide();
-         })
-         forwardButton.append(nextSvg);
+        })
+        forwardButton.append(nextSvg);
 
-         controls.append(backButton, forwardButton);
-         $('#gallery').append(list, controls);
+        function selectSlide(i) {
+            $('.slide.showing').attr('class', 'slide');
+            for ( var j=0; j < 3; j++) {
+                slides[i-j] && slides[i-j].css({ 'background-image': 'url(' + photos[i-j] + ')'})
+                slides[i].css({ 'background-image': 'url(' + photos[i] + ')'})
+                slides[i+j] && slides[i+j].css({ 'background-image': 'url(' + photos[i+j] + ')'})
+            }
+            currentSlide = i;
+            console.log(currentSlide);
+            slides[i].attr('class', 'slide showing');
+        }
+        function showReel(photos) {
+            var previewSlides = photos.map(function(photo, i) {
+                var previewClass = i === 0 ? 'preview showing' : 'preview';
+                var previewSlide = $('<li></li>').addClass(previewClass).css({
+                    'background-image': 'url(' + photo.replace('_b.jpg','_s.jpg') + ')'
+                }).on('click', function(e) {
+                    selectSlide(i)
+                });
+                return previewSlide;
+            });
+            var list = $('<ul id="previewSlides"></ul>');
+            list.append(previewSlides);
+            return list
+        }
+
+        controls.append(backButton, divider, forwardButton);
+        var sideReel = showReel(photos);
+        sideReel.on('scroll', function(){
+          var x = sideReel.scrollTop()
+          if( x >= 200){
+            //('#gallery').html('');
+            //createGallery(photos.slice(50,100));
+          }
+          if( x >= 400){
+            //$('#gallery').html('');
+            //createGallery(photos.slice(100,150));
+          }
+
+        });
+        $('#gallery').append(list, controls, sideReel);
+
     }
 
     function getTimeRemaining(endtime) {
@@ -122,38 +185,7 @@
     });
 
     var deadline = 'August 24 2016 13:30:00 GMT+0200'
-   // initializeClock('clockdiv', deadline);
-
-    function getGuestList(file) {
-        $.getJSON(file, (guests) =>{
-            console.log('Guests', guests);
-        });
-    }
-
-    function getUserDetails(guests) {
-        document.getElementById('submit-name').addEventListener('click', (e) => {
-            e.preventDefault();
-            var user = document.getElementById('autocomplete').value
-            var guest = getGuestDetails(user,guests);
-            console.log(guest);
-            if (!guest) {
-                $('#contactUs').toggle();
-                $('#contactMessage').toggle();
-                scrollTo('#contactUs')
-            } else {
-                scrollTo("#wedding");
-                weddingInfo(guest);
-            }
-        });
-    }
-
-    function getGuestDetails(user, guests) {
-        let userDetails = guests.filter((guest) => {
-            return guest.GuestName === user
-        });
-        return userDetails[0]
-    }
-
+        // initializeClock('clockdiv', deadline);
 
     function scrollTo(location) {
         $('html,body').animate({
@@ -163,7 +195,7 @@
     }
 
     function weddingInfo(guest) {
-        let className = guest.FullDay ==='1'? 'breakfast':'evening';
+        var className = guest.FullDay === '1' ? 'breakfast' : 'evening';
         $('#wrapper').toggle();
         $('#contactUs').toggle();
 
@@ -178,26 +210,39 @@
     }
 
     function sendRSVP() {
-        $('#submit-rsvp').on('click', () => {
-            let form = document.getElementById('RSVP')
-            let fullName = $('input[name=full-name]').val();
-            let rsvp = $('select option:selected').val();
-            let mealOption = $('input[name=meal-option]').val();
-            let furtherDetails = $('textarea[name=further-details]').val();
-            let guestName = $('input[name=guest-name]').val();
 
-            let body = encodeURIComponent('Hi Zahra & Tormod, ' + mealOption + '\n\n' + furtherDetails + '\n\nComing with: ' + guestName + '\n\nfrom ' + '\n\n' + fullName);
-            console.log('bbb', body, mealOption, furtherDetails, guestName);
+        $('#submit-rsvp').on('click', function() {
+            var form = document.getElementById('RSVP')
+            var fullName = $('input[name=full-name]').val();
+            var rsvp = $('select option:selected').val();
+            var mealOption = $('input[name=meal-option]').val();
+            var furtherDetails = $('textarea[name=further-details]').val();
+            var guestName = $('input[name=guest-name]').val();
 
+            var body = encodeURIComponent('Hi Zahra & Tormod, ' + mealOption + '\n\n' + furtherDetails + '\n\nComing with: ' + guestName + '\n\nfrom ' + '\n\n' + fullName);
             window.open('mailto:tormodsmith@gmail.com?subject=RSVP%20' + rsvp + '%20Wedding&body=' + body, '_blank');
         })
     }
 
-    $('#giftButton').on('click',()=>{
+    $('#giftButton').on('click', function() {
         $('#gift').toggle();
     });
 
-    //getGuestList('guests.json');  cross origin requests only supported ....
-    getUserDetails(GUESTS);
+    var source = GUESTS.map(function(guest) {
+        return guest.GuestName
+    });
+
+    $('.fa.fa-angle-down.fa-5x').on('click', function() {
+        scrollTo("#wedding");
+    })
+
+    $("#autocomplete").autocomplete({
+        source: source
+    });
+
+    var deadline = 'August 24 2016 13:30:00 GMT+0200';
+
+    initializeClock('clockdiv', deadline);
+  //  getUserDetails(GUESTS);
     sendRSVP();
 }());
